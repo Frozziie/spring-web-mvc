@@ -1,0 +1,20 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="informe" class="mvc.model.InformeImpl"></bean>
+           
+    <bean id="empleado" class="mvc.model.Director">
+    	<constructor-arg ref="informe"></constructor-arg> <!-- DI Constructor. "ref" se refiere a la clase (o clase que implemente la interfaz) a injectar -->
+    	<property name="email" value="directores@frozzie.com"></property> <!-- DI Propiedades. El "name" debe ser el nombre del setter sin el "set" y con la primer letra en minúscula -->
+    	<property name="empresa" value="Frozziie"></property> <!-- DI Propiedades. El "name" debe ser el nombre del setter sin el "set" y con la primer letra en minúscula -->
+    </bean>
+    
+    <bean id="secretario" class="mvc.model.Secretario">    
+    	<property name="informe" ref="informe"></property> <!-- DI Setter. El "name" debe ser el nombre del setter sin el "set" y con la primer letra en minúscula -->
+    	<property name="email" value="secretaria@frozzie.com"></property> <!-- DI Propiedades. El "name" debe ser el nombre del setter sin el "set" y con la primer letra en minúscula -->
+    	<property name="empresa" value="Frozziie"></property> <!-- DI Propiedades. El "name" debe ser el nombre del setter sin el "set" y con la primer letra en minúscula -->
+    </bean>
+    
+</beans>
